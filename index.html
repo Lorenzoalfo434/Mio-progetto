@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tenuta Green House | Case Vacanze di Lusso in Sicilia, Palermo</title>
+<meta name="description" content="Tenuta Green House: case vacanze di lusso immerse nella campagna siciliana, a pochi minuti da Palermo. Piscina privata, uliveti secolari, ospitalità autentica. Prenota il tuo soggiorno.">
+<meta name="keywords" content="case vacanze Sicilia, case vacanze Palermo, tenuta Sicilia, agriturismo di lusso Sicilia, affitto villa Sicilia">
+<meta name="theme-color" content="#6E7350">
+<link rel="canonical" href="https://www.tenutagreenhouse.it/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tenuta Green House | Case Vacanze di Lusso in Sicilia">
+<meta property="og:description" content="Vivi la Sicilia autentica: piscina privata, uliveti secolari e ospitalità di famiglia a due passi da Palermo.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80">
+<meta property="og:locale" content="it_IT">
+
+<!-- Google Fonts: Playfair Display (titoli) + Inter (testi) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+
+<!-- Tailwind CSS via CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          sand: { DEFAULT: '#E7DCC3', light: '#F1E9D8' },
+          cream: '#FBF7F0',
+          olive: { light: '#98A177', DEFAULT: '#6E7350', dark: '#454A34' },
+          terracotta: { light: '#E3A67D', DEFAULT: '#C17A52', dark: '#9C5E3C' },
+          charcoal: '#2A2822',
+          stone: '#8C8570'
+        },
+        fontFamily: {
+          serif: ['"Playfair Display"', 'serif'],
+          sans: ['Inter', 'sans-serif']
+        },
+        boxShadow: {
+          soft: '0 20px 60px -15px rgba(42,40,34,0.28)'
+        },
+        maxWidth: { '8xl': '90rem' }
+      }
+    }
+  };
+</script>
+
+<!-- JSON-LD: dati struttura per SEO locale. Aggiorna indirizzo, telefono e coordinate reali. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  "name": "Tenuta Green House",
+  "description": "Case vacanze di lusso in Sicilia, tra uliveti secolari e a pochi minuti da Palermo.",
+  "image": "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Contrada Esempio, SP 1",
+    "addressLocality": "Palermo",
+    "addressRegion": "Sicilia",
+    "postalCode": "90100",
+    "addressCountry": "IT"
+  },
+  "telephone": "+39 000 000 0000",
+  "priceRange": "€€€",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "3"
+  }
+}
+</script>
+
+<style>
+  :root{ scroll-behavior: smooth; scroll-padding-top: 88px; }
+  body{ font-family: 'Inter', sans-serif; background: #FBF7F0; color: #2A2822; }
+  h1,h2,h3,h4,.font-serif{ font-family: 'Playfair Display', serif; }
+
+  /* Reveal on scroll */
+  .reveal{ opacity: 0; transform: translateY(14px); transition: opacity .4s ease-out, transform .4s ease-out; }
+  .reveal.is-visible{ opacity: 1; transform: translateY(0); }
+  .reveal-delay-1.is-visible{ transition-delay: .08s; }
+  .reveal-delay-2.is-visible{ transition-delay: .16s; }
+  .reveal-delay-3.is-visible{ transition-delay: .24s; }
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity: 1 !important; transform: none !important; transition: none !important; }
+    html{ scroll-behavior: auto; }
+  }
+
+  /* Header state */
+  header{ transition: background-color .4s ease, box-shadow .4s ease, padding .4s ease; }
+  header .nav-link{ color: #FBF7F0; text-shadow: 0 1px 6px rgba(0,0,0,.35); }
+  header.scrolled{ background-color: rgba(251,247,240,.94); backdrop-filter: blur(10px); box-shadow: 0 8px 30px -12px rgba(42,40,34,.18); }
+  header.scrolled .nav-link{ color: #2A2822; text-shadow: none; }
+  header.scrolled .brand-mark{ color: #454A34; }
+  header .brand-mark{ color: #FBF7F0; text-shadow: 0 1px 6px rgba(0,0,0,.35); }
+
+  .hero-scroll-cue{ animation: bob 2.2s ease-in-out infinite; }
+  @keyframes bob{ 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(8px);} }
+
+  /* Lightbox */
+  #lightbox{ backdrop-filter: blur(6px); }
+  #lightbox[hidden]{ display: none; }
+
+  /* Calendar */
+  .cal-day{ aspect-ratio: 1 / 1; }
+  .cal-dot{ width: 6px; height: 6px; border-radius: 999px; }
+
+  input:focus-visible, textarea:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible{
+    outline: 2px solid #9C5E3C; outline-offset: 2px;
+  }
+
+  ::selection{ background: #E3A67D; color: #2A2822; }
+</style>
+</head>
+
+<body class="bg-cream text-charcoal antialiased">
+
+<!-- ============ SPRITE ICONE SVG (decorative, aria-hidden) ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M2 8.5c5.5-5 14.5-5 20 0M5.5 12c3.6-3.2 9.4-3.2 13 0M9 15.5c1.9-1.6 4.1-1.6 6 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/><circle cx="12" cy="18.5" r="1.2" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-snow" viewBox="0 0 24 24"><path d="M12 3v18M4.5 7l15 10M19.5 7l-15 10M8 4.5l4 3 4-3M8 19.5l4-3 4 3M4.5 10l3 2-3 2M19.5 10l-3 2 3 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+    <symbol id="i-pool" viewBox="0 0 24 24"><path d="M3 16c1.6 1.4 3.2 1.4 4.8 0 1.6-1.4 3.2-1.4 4.8 0 1.6 1.4 3.2 1.4 4.8 0 1.6-1.4 3.2-1.4 4.6 0M3 20c1.6 1.4 3.2 1.4 4.8 0 1.6-1.4 3.2-1.4 4.8 0 1.6 1.4 3.2 1.4 4.8 0 1.6-1.4 3.2-1.4 4.6 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/><path d="M8 12V6a2 2 0 114 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></symbol>
+    <symbol id="i-park" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6" fill="none"/><path d="M10 16V8h2.6a2.4 2.4 0 010 4.8H10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+    <symbol id="i-kitchen" viewBox="0 0 24 24"><path d="M7 3v7a2 2 0 002 2v9M7 3v5M9 3v5M11 3v9M17 3c-1.7 0-3 1.9-3 4.2 0 1.9 1 3.3 2.3 3.7L16 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+    <symbol id="i-bed" viewBox="0 0 24 24"><path d="M3 18v-6a2 2 0 012-2h14a2 2 0 012 2v6M3 18v2M21 18v2M3 13V8a1 1 0 011-1h5a1 1 0 011 1v2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M12 10h6a2 2 0 012 2v1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2" stroke="currentColor" stroke-width="1.6" fill="none"/><path d="M3 19c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/><path d="M15.5 5.2A3.2 3.2 0 0117 11.2M17.5 13.7c2.8.4 4.5 2.4 4.5 5.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></symbol>
+    <symbol id="i-view" viewBox="0 0 24 24"><path d="M2 19l6.5-9 4.5 5.5L16 12l6 7H2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" fill="none"/><circle cx="17.5" cy="6.5" r="2" stroke="currentColor" stroke-width="1.6" fill="none"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3.2l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 3.1 1-6.1-4.4-4.3 6.1-.9L12 3.2z" fill="currentColor"/></symbol>
+    <symbol id="i-chev-left" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+    <symbol id="i-chev-right" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.6 7-12a7 7 0 10-14 0c0 5.4 7 12 7 12z" stroke="currentColor" stroke-width="1.6" fill="none"/><circle cx="12" cy="9" r="2.4" stroke="currentColor" stroke-width="1.6" fill="none"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 006.5 6.5l1.5-2 4 1.5v3a2 2 0 01-2.2 2C10.5 19 5 13.5 4.5 5.2A2 2 0 016.5 3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" fill="none"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6" fill="none"/><path d="M4 6.5l8 6.5 8-6.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" stroke-width="1.6" fill="none"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6" fill="none"/><circle cx="17" cy="7" r="1.1" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-fb" viewBox="0 0 24 24"><path d="M14 21v-8h2.7l.4-3.2H14V7.7c0-.9.3-1.6 1.7-1.6h1.6V3.4C17 3.3 15.9 3 14.6 3 12 3 10.2 4.6 10.2 7.4v2.4H7.5V13h2.7v8H14z" fill="currentColor"/></symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M4 20l1.3-4.4A8 8 0 1112 20a7.9 7.9 0 01-4-1.1L4 20z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" fill="none"/><path d="M8.5 8.7c.2-.6.5-.6.8-.6h.5c.2 0 .4 0 .6.4.2.5.6 1.5.6 1.6.1.1.1.3 0 .4-.1.2-.1.3-.3.4-.1.2-.3.3-.4.5-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2.1 1.3 2.4 1.5.3.1.4.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2.1 1.5.7 1.8.8.3.1.5.2.5.3 0 .2 0 .9-.4 1.3-.4.4-1.2.8-2.2.7-.9-.1-3-1-4.4-2.6-1.4-1.6-2.3-3.2-2.4-3.7-.1-.4-.4-1.1-.1-1.7z" fill="currentColor"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M4 20c8-1 13-6.5 15.5-15C11 6.5 5.5 11 4.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M6 18C10 13 13 10 17.5 6.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none"/></symbol>
+    <symbol id="i-arrow-down" viewBox="0 0 24 24"><path d="M12 4v15M6 13l6 6 6-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6" fill="none"/><path d="M12 8v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="16" r="1" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="16" rx="2" stroke="currentColor" stroke-width="1.6" fill="none"/><path d="M3.5 9.5h17M8 4.5v-1M16 4.5v-1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-airbnb" viewBox="0 0 24 24"><path d="M12 3c3 4 6.5 8.7 6.5 12a6.5 6.5 0 01-13 0C5.5 11.7 9 7 12 3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" fill="none"/></symbol>
+  </defs>
+</svg>
+
+<!-- ============ HEADER ============ -->
+<header id="site-header" class="fixed top-0 inset-x-0 z-50">
+  <div class="max-w-8xl mx-auto px-6 md:px-10">
+    <div class="flex items-center justify-between h-20 md:h-24">
+      <a href="#home" class="brand-mark flex items-center gap-2 font-serif text-xl md:text-2xl tracking-wide">
+        <svg class="w-6 h-6" aria-hidden="true"><use href="#i-leaf"/></svg>
+        Tenuta <span class="italic">Green House</span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-10 text-sm font-medium tracking-wide">
+        <a href="#home" class="nav-link hover:opacity-70 transition">Home</a>
+        <a href="#le-case" class="nav-link hover:opacity-70 transition">Le Case</a>
+        <a href="#servizi" class="nav-link hover:opacity-70 transition">Servizi</a>
+        <a href="#gallery" class="nav-link hover:opacity-70 transition">Gallery</a>
+        <a href="#recensioni" class="nav-link hover:opacity-70 transition">Recensioni</a>
+        <a href="#prenota" class="ml-2 inline-flex items-center rounded-full bg-terracotta-dark text-cream px-6 py-2.5 shadow-soft hover:bg-terracotta transition">Prenota</a>
+      </nav>
+
+      <button id="menu-toggle" class="lg:hidden nav-link p-2" aria-label="Apri il menu di navigazione" aria-expanded="false" aria-controls="mobile-menu">
+        <svg id="menu-icon-open" class="w-7 h-7" aria-hidden="true"><use href="#i-menu"/></svg>
+        <svg id="menu-icon-close" class="w-7 h-7 hidden" aria-hidden="true"><use href="#i-close"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="lg:hidden hidden bg-cream/98 backdrop-blur border-t border-sand shadow-soft">
+    <nav class="flex flex-col px-6 py-6 gap-1 text-charcoal text-lg font-serif">
+      <a href="#home" class="mobile-link py-3 border-b border-sand/70">Home</a>
+      <a href="#le-case" class="mobile-link py-3 border-b border-sand/70">Le Case</a>
+      <a href="#servizi" class="mobile-link py-3 border-b border-sand/70">Servizi</a>
+      <a href="#gallery" class="mobile-link py-3 border-b border-sand/70">Gallery</a>
+      <a href="#recensioni" class="mobile-link py-3 border-b border-sand/70">Recensioni</a>
+      <a href="#prenota" class="mobile-link mt-4 inline-flex justify-center rounded-full bg-terracotta-dark text-cream px-6 py-3 text-base font-sans font-medium">Prenota il tuo soggiorno</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<!-- FOTO: sostituisci l'immagine hero con una foto grande della tenuta (consigliato 1920x1280 o superiore) -->
+<section id="home" class="relative h-screen min-h-[640px] w-full overflow-hidden">
+  <img
+    src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1920&q=80"
+    data-fallback-label="Tenuta Green House"
+    alt="Vista panoramica della Tenuta Green House al tramonto, tra uliveti e colline siciliane"
+    class="absolute inset-0 w-full h-full object-cover"
+    loading="eager" fetchpriority="high">
+  <div class="absolute inset-0 bg-gradient-to-b from-charcoal/60 via-charcoal/35 to-charcoal/70"></div>
+
+  <div class="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
+    <p class="reveal text-cream/90 tracking-[0.35em] uppercase text-xs md:text-sm mb-5">Sicilia &middot; Tenuta di Campagna</p>
+    <h1 class="reveal reveal-delay-1 font-serif text-white text-4xl sm:text-5xl md:text-7xl leading-[1.1] max-w-4xl">
+      Vivi la Sicilia Autentica <br class="hidden md:block"> nella Tenuta Green House
+    </h1>
+    <p class="reveal reveal-delay-2 text-cream/90 mt-6 max-w-xl text-base md:text-lg font-light">
+      Uliveti secolari, piscina privata e l'ospitalità di una famiglia siciliana, a pochi minuti da Palermo.
+    </p>
+    <div class="reveal reveal-delay-3 mt-10 flex flex-col sm:flex-row items-center gap-4">
+      <a href="#prenota" class="inline-flex items-center gap-2 rounded-full bg-terracotta-dark hover:bg-terracotta text-cream px-9 py-4 text-sm md:text-base font-medium tracking-wide shadow-soft transition">
+        Prenota il tuo soggiorno
+      </a>
+      <a href="#le-case" class="inline-flex items-center gap-2 rounded-full border border-cream/70 text-cream hover:bg-cream/10 px-9 py-4 text-sm md:text-base font-medium tracking-wide transition">
+        Scopri le case
+      </a>
+    </div>
+  </div>
+
+  <a href="#chi-siamo" aria-label="Scorri per saperne di più" class="hero-scroll-cue absolute bottom-8 left-1/2 -translate-x-1/2 z-10 text-cream/90">
+    <svg class="w-6 h-6" aria-hidden="true"><use href="#i-arrow-down"/></svg>
+  </a>
+</section>
+
+<!-- ============ CHI SIAMO ============ -->
+<section id="chi-siamo" class="py-24 md:py-32 bg-cream">
+  <div class="max-w-8xl mx-auto px-6 md:px-10 grid md:grid-cols-2 gap-14 md:gap-20 items-center">
+    <div class="reveal relative order-2 md:order-1">
+      <div class="absolute -top-5 -left-5 w-full h-full border border-olive/40 rounded-2xl hidden sm:block"></div>
+      <!-- FOTO: sostituisci con una foto della facciata o del giardino della tenuta -->
+      <img
+        src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1000&q=80"
+        data-fallback-label="La Tenuta"
+        alt="Facciata in pietra della Tenuta Green House circondata da ulivi"
+        class="relative rounded-2xl shadow-soft w-full h-[420px] md:h-[520px] object-cover">
+    </div>
+    <div class="order-1 md:order-2">
+      <p class="reveal text-terracotta-dark tracking-[0.3em] uppercase text-xs md:text-sm mb-4">La Nostra Storia</p>
+      <h2 class="reveal reveal-delay-1 font-serif text-3xl md:text-5xl leading-tight mb-6">Un angolo di Sicilia che sa ancora di casa</h2>
+      <p class="reveal reveal-delay-2 text-stone leading-relaxed mb-4">
+        Tenuta Green House nasce tra gli uliveti che la nostra famiglia coltiva da tre generazioni, a pochi minuti dal mare e dal centro di Palermo. Abbiamo trasformato le vecchie case coloniche in rifugi eleganti, senza perdere il calore autentico delle nostre origini.
+      </p>
+      <p class="reveal reveal-delay-3 text-stone leading-relaxed">
+        Qui l'accoglienza è familiare: vi accompagniamo personalmente durante il soggiorno, consigliandovi i sapori, i borghi e le spiagge che amiamo di più.
+      </p>
+
+      <div class="reveal reveal-delay-3 grid grid-cols-3 gap-6 mt-10 pt-8 border-t border-sand">
+        <div>
+          <p class="font-serif text-3xl md:text-4xl text-olive-dark">15+</p>
+          <p class="text-xs md:text-sm text-stone mt-1">Anni di Ospitalità</p>
+        </div>
+        <div>
+          <p class="font-serif text-3xl md:text-4xl text-olive-dark">6</p>
+          <p class="text-xs md:text-sm text-stone mt-1">Ettari di Uliveto</p>
+        </div>
+        <div>
+          <p class="font-serif text-3xl md:text-4xl text-olive-dark">500+</p>
+          <p class="text-xs md:text-sm text-stone mt-1">Ospiti Felici</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LE CASE VACANZA ============ -->
+<section id="le-case" class="py-24 md:py-32 bg-sand-light">
+  <div class="max-w-8xl mx-auto px-6 md:px-10">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <p class="reveal text-terracotta-dark tracking-[0.3em] uppercase text-xs md:text-sm mb-4">Dove Soggiornare</p>
+      <h2 class="reveal reveal-delay-1 font-serif text-3xl md:text-5xl leading-tight">Le Nostre Case Vacanza</h2>
+      <p class="reveal reveal-delay-2 text-stone mt-5">Tre rifugi indipendenti, ognuno con il proprio carattere, pensati per farvi vivere la tenuta al massimo del comfort.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 lg:gap-10">
+
+      <!-- Casa 1 -->
+      <article class="reveal bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-xl transition-shadow group">
+        <div class="overflow-hidden h-64">
+          <!-- FOTO: Casa degli Ulivi -->
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80"
+               data-fallback-label="Casa degli Ulivi"
+               alt="Interno luminoso della Casa degli Ulivi con arredi in stile mediterraneo"
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        </div>
+        <div class="p-7">
+          <h3 class="font-serif text-2xl mb-2">Casa degli Ulivi</h3>
+          <p class="text-stone text-sm mb-5">Affacciata direttamente sull'uliveto secolare, con terrazza privata per le cene al tramonto.</p>
+          <div class="flex items-center gap-5 text-sm text-charcoal/80 mb-5 pb-5 border-b border-sand">
+            <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-olive" aria-hidden="true"><use href="#i-users"/></svg>4 ospiti</span>
+            <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-olive" aria-hidden="true"><use href="#i-bed"/></svg>2 camere</span>
+            <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-olive" aria-hidden="true"><use href="#i-view"/></svg>Vista uliveto</span>
+          </div>
+          <ul class="grid grid-cols-3 gap-3 mb-6 text-[11px] text-stone">
+            <li class="flex flex-col items-center gap-1.5"><svg class="w-5 h-5 text-terracotta-dark" aria-hidden="true"><use href="#i-wifi"/></svg>WiFi</li>
+            <li class="flex flex-col items-center gap-1.5"><svg class="w-5 h-5 text-terracotta-dark" aria-hidden="true"><use href="#i-snow"/></svg>Clima</li>
+            <li class="flex flex-col items-center gap-1.5"><svg class="w-5 h-5 text-terracotta-dark" aria-hidden="true"><use href="#i-pool"/></svg>Piscina</li>
+            <li class="flex flex-col items-center gap-1.5"><svg class="w-5 h-5 text-terracotta-dark" aria-hidden="true"><use href="#i-park"/></svg>Parcheggio</li>
+            <li class="flex flex-col items-center gap-1.5"><svg class="w-5 h-5 text-terracotta-dark" aria-hidden="true"><use href="#i-kitchen"/></svg>Cucina</li>
+          </ul>
+          <a href="#prenota" class="inline-flex items-center gap-2 text-olive-dark font-medium text-sm hover:text-terracotta-dark transition">Richiedi disponibilit&agrave; <svg class="w-4 h-4" aria-hidden="true"><use href="#i-chev-right"/></svg></a>
+        </div>
+      </article>
+
+      <!-- Casa 2 -->
+      <article class="reveal reveal-delay-1 bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-xl transition-shadow group">
+        <div class="overflow-hidden h-64">
+          <!-- FOTO: Casa dei Limoni -->
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+               data-fallback-label="Casa dei Limoni"
+               alt="Terrazza esterna della Casa dei Limoni con tavolo per cene all'aperto"
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        </div>
+        <div class="p-7">
+          <h3 class="font-serif text-2xl mb-2">Casa dei Limoni</h3>
+          <p class="text-stone text-sm mb-5">Circondata dal profumo degli agrumeti, ideale per famiglie con ampio giardino privato.</p>
+          <div class="flex items-center gap-5 text-sm text-charcoal/80 mb-5 pb-5 border-b border-sand">
+            <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-olive" aria-hidden="true"><use href="#i-users"/></svg>6 ospiti</span>
+            <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-olive" aria-hidden="true"><use href="#i-bed"/></svg>3 camere</span>
+            <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-olive" aria-hidden="true"><use href="#i-view"/></svg>Vista giardino</span>
+          </div>
+          <ul class="grid grid-cols-3 gap-3 mb-6 text-[11px] text-stone">
+            <li class="flex flex-col items-center gap-1.5"><svg class="w-5 h-5 text-terracotta-dark" aria-hidden="true"><use href="#i-wifi"/></svg>WiFi</li>
+            <li class="flex flex-col items-center gap-1.5"><svg class="w-5 h-5 text-terracotta-dark" aria-hidden="true"><use href="#i-snow"/></svg>Clima</li>
+            <li class="flex flex-col items-center gap-1.5"><svg class="w-5 h-5 text-terracotta-dark" aria-hidden="true"><use href="#i-pool"/></svg>Piscina</li>
+            <li class="flex flex-col items-center gap-1.5"><svg class="w-5 h-5 text-terracotta-dark" aria-hidden="true"><use href="#i-park"/></svg>Parcheggio</li>
+            <li class="flex flex-col items-center gap-1.5"><svg class="w-5 h-5 text-terracotta-dark" aria-hidden="true"><use href="#i-kitchen"/></svg>Cucina</li>
+          </ul>
+          <a href="#prenota" class="inline-flex items-center gap-2 text-olive-dark font-medium text-sm hover:text-terracotta-dark transition">Richiedi disponibilit&agrave; <svg class="w-4 h-4" aria-hidden="true"><use href="#i-chev-right"/></svg></a>
+        </div>
+      </article>
+
+      <!-- Casa 3 -->
+      <article class="reveal reveal-delay-2 bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-xl transition-shadow group">
+        <div class="overflow-hidden h-64">
+          <!-- FOTO: Suite Panoramica -->
+          <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=800&q=80"
+               data-fallback-label="Suite Panoramica"
+               alt="Piscina a sfioro della Suite Panoramica con vista sulla campagna siciliana"
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        </div>
+        <div class="p-7">
+          <h3 class="font-serif text-2xl mb-2">Suite Panoramica</h3>
+          <p class="text-stone text-sm mb-5">La nostra suite più esclusiva, con piscina a sfioro privata e vista sulle colline.</p>
+          <div class="flex items-center gap-5 text-sm text-charcoal/80 mb-5 pb-5 border-b border-sand">
+            <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-olive" aria-hidden="true"><use href="#i-users"/></svg>2 ospiti</span>
+            <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-olive" aria-hidden="true"><use href="#i-bed"/></svg>1 camera</span>
+            <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-olive" aria-hidden="true"><use href="#i-view"/></svg>Vista panoramica</span>
+          </div>
+          <ul class="grid grid-cols-3 gap-3 mb-6 text-[11px] text-stone">
+            <li class="flex flex-col items-center gap-1.5"><svg class="w-5 h-5 text-terracotta-dark" aria-hidden="true"><use href="#i-wifi"/></svg>WiFi</li>
+            <li class="flex flex-col items-center gap-1.5"><svg class="w-5 h-5 text-terracotta-dark" aria-hidden="true"><use href="#i-snow"/></svg>Clima</li>
+            <li class="flex flex-col items-center gap-1.5"><svg class="w-5 h-5 text-terracotta-dark" aria-hidden="true"><use href="#i-pool"/></svg>Piscina</li>
+            <li class="flex flex-col items-center gap-1.5"><svg class="w-5 h-5 text-terracotta-dark" aria-hidden="true"><use href="#i-park"/></svg>Parcheggio</li>
+            <li class="flex flex-col items-center gap-1.5"><svg class="w-5 h-5 text-terracotta-dark" aria-hidden="true"><use href="#i-kitchen"/></svg>Cucina</li>
+          </ul>
+          <a href="#prenota" class="inline-flex items-center gap-2 text-olive-dark font-medium text-sm hover:text-terracotta-dark transition">Richiedi disponibilit&agrave; <svg class="w-4 h-4" aria-hidden="true"><use href="#i-chev-right"/></svg></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVIZI INCLUSI ============ -->
+<section id="servizi" class="py-24 md:py-32 bg-olive-dark text-cream">
+  <div class="max-w-8xl mx-auto px-6 md:px-10">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <p class="reveal text-terracotta-light tracking-[0.3em] uppercase text-xs md:text-sm mb-4">Comfort Senza Pensieri</p>
+      <h2 class="reveal reveal-delay-1 font-serif text-3xl md:text-5xl leading-tight">Servizi Inclusi</h2>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+      <div class="reveal flex flex-col items-center text-center gap-3">
+        <span class="w-14 h-14 rounded-full bg-cream/10 flex items-center justify-center"><svg class="w-6 h-6 text-cream" aria-hidden="true"><use href="#i-wifi"/></svg></span>
+        <p class="text-sm">WiFi ad Alta Velocit&agrave;</p>
+      </div>
+      <div class="reveal reveal-delay-1 flex flex-col items-center text-center gap-3">
+        <span class="w-14 h-14 rounded-full bg-cream/10 flex items-center justify-center"><svg class="w-6 h-6 text-cream" aria-hidden="true"><use href="#i-snow"/></svg></span>
+        <p class="text-sm">Aria Condizionata</p>
+      </div>
+      <div class="reveal reveal-delay-2 flex flex-col items-center text-center gap-3">
+        <span class="w-14 h-14 rounded-full bg-cream/10 flex items-center justify-center"><svg class="w-6 h-6 text-cream" aria-hidden="true"><use href="#i-pool"/></svg></span>
+        <p class="text-sm">Piscina Privata</p>
+      </div>
+      <div class="reveal reveal-delay-3 flex flex-col items-center text-center gap-3">
+        <span class="w-14 h-14 rounded-full bg-cream/10 flex items-center justify-center"><svg class="w-6 h-6 text-cream" aria-hidden="true"><use href="#i-park"/></svg></span>
+        <p class="text-sm">Parcheggio Privato</p>
+      </div>
+      <div class="reveal flex flex-col items-center text-center gap-3">
+        <span class="w-14 h-14 rounded-full bg-cream/10 flex items-center justify-center"><svg class="w-6 h-6 text-cream" aria-hidden="true"><use href="#i-kitchen"/></svg></span>
+        <p class="text-sm">Cucina Attrezzata</p>
+      </div>
+      <div class="reveal reveal-delay-1 flex flex-col items-center text-center gap-3">
+        <span class="w-14 h-14 rounded-full bg-cream/10 flex items-center justify-center"><svg class="w-6 h-6 text-cream" aria-hidden="true"><use href="#i-leaf"/></svg></span>
+        <p class="text-sm">Colazione Tipica Siciliana</p>
+      </div>
+      <div class="reveal reveal-delay-2 flex flex-col items-center text-center gap-3">
+        <span class="w-14 h-14 rounded-full bg-cream/10 flex items-center justify-center"><svg class="w-6 h-6 text-cream" aria-hidden="true"><use href="#i-view"/></svg></span>
+        <p class="text-sm">Vista Panoramica</p>
+      </div>
+      <div class="reveal reveal-delay-3 flex flex-col items-center text-center gap-3">
+        <span class="w-14 h-14 rounded-full bg-cream/10 flex items-center justify-center"><svg class="w-6 h-6 text-cream" aria-hidden="true"><use href="#i-check"/></svg></span>
+        <p class="text-sm">Check-in Flessibile</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section id="gallery" class="py-24 md:py-32 bg-cream">
+  <div class="max-w-8xl mx-auto px-6 md:px-10">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <p class="reveal text-terracotta-dark tracking-[0.3em] uppercase text-xs md:text-sm mb-4">Un Assaggio della Tenuta</p>
+      <h2 class="reveal reveal-delay-1 font-serif text-3xl md:text-5xl leading-tight">Gallery</h2>
+      <p class="reveal reveal-delay-2 text-stone mt-5">Clicca su una foto per ingrandirla. <span class="italic">Le immagini qui sotto sono placeholder: sostituiscile con gli scatti della tua tenuta.</span></p>
+    </div>
+
+    <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-4 auto-rows-[180px] md:auto-rows-[220px] gap-4">
+      <!-- FOTO: sostituisci ognuna di queste 8 immagini con le tue -->
+      <button class="gallery-item reveal relative row-span-2 col-span-1 md:col-span-2 rounded-xl overflow-hidden group" data-caption="Piscina privata al tramonto">
+        <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1000&q=80" data-fallback-label="Piscina" alt="Piscina privata della tenuta al tramonto" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+      </button>
+      <button class="gallery-item reveal reveal-delay-1 relative rounded-xl overflow-hidden group" data-caption="Terrazza panoramica">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=700&q=80" data-fallback-label="Terrazza" alt="Terrazza panoramica con tavolo per cene all'aperto" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+      </button>
+      <button class="gallery-item reveal reveal-delay-2 relative rounded-xl overflow-hidden group" data-caption="Camera da letto">
+        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=700&q=80" data-fallback-label="Camera" alt="Camera da letto elegante in stile mediterraneo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+      </button>
+      <button class="gallery-item reveal relative rounded-xl overflow-hidden group" data-caption="Uliveto secolare">
+        <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&w=700&q=80" data-fallback-label="Uliveto" alt="Uliveto secolare della tenuta" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+      </button>
+      <button class="gallery-item reveal reveal-delay-1 relative rounded-xl overflow-hidden group" data-caption="Cucina attrezzata">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=700&q=80" data-fallback-label="Cucina" alt="Cucina attrezzata della casa vacanza" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+      </button>
+      <button class="gallery-item reveal reveal-delay-2 relative col-span-1 md:col-span-2 rounded-xl overflow-hidden group" data-caption="Tramonto sulla campagna siciliana">
+        <img src="https://images.unsplash.com/photo-1508615070457-7baeba4003ab?auto=format&fit=crop&w=1000&q=80" data-fallback-label="Tramonto" alt="Tramonto sulla campagna siciliana visto dalla tenuta" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+      </button>
+      <button class="gallery-item reveal relative rounded-xl overflow-hidden group" data-caption="Ingresso della tenuta">
+        <img src="https://images.unsplash.com/photo-1571055107559-3e67626fa8be?auto=format&fit=crop&w=700&q=80" data-fallback-label="Ingresso" alt="Ingresso in pietra della tenuta" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+      </button>
+      <button class="gallery-item reveal reveal-delay-1 relative rounded-xl overflow-hidden group" data-caption="Vista sul mare">
+        <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=700&q=80" data-fallback-label="Vista Mare" alt="Vista sulla costa siciliana dai dintorni della tenuta" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lightbox" hidden class="fixed inset-0 z-[60] bg-charcoal/90 flex items-center justify-center px-4" role="dialog" aria-modal="true" aria-label="Visualizzatore immagini">
+  <button id="lightbox-close" aria-label="Chiudi visualizzatore" class="absolute top-5 right-5 md:top-8 md:right-8 text-cream/90 hover:text-cream p-2">
+    <svg class="w-7 h-7" aria-hidden="true"><use href="#i-close"/></svg>
+  </button>
+  <button id="lightbox-prev" aria-label="Immagine precedente" class="absolute left-2 md:left-6 text-cream/90 hover:text-cream p-3">
+    <svg class="w-8 h-8" aria-hidden="true"><use href="#i-chev-left"/></svg>
+  </button>
+  <button id="lightbox-next" aria-label="Immagine successiva" class="absolute right-2 md:right-6 text-cream/90 hover:text-cream p-3">
+    <svg class="w-8 h-8" aria-hidden="true"><use href="#i-chev-right"/></svg>
+  </button>
+  <figure class="max-w-4xl w-full">
+    <img id="lightbox-img" src="" alt="" class="w-full max-h-[75vh] object-contain rounded-lg">
+    <figcaption id="lightbox-caption" class="text-cream/85 text-center mt-4 text-sm tracking-wide"></figcaption>
+  </figure>
+</div>
+
+<!-- ============ RECENSIONI ============ -->
+<section id="recensioni" class="py-24 md:py-32 bg-sand-light">
+  <div class="max-w-8xl mx-auto px-6 md:px-10">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <p class="reveal text-terracotta-dark tracking-[0.3em] uppercase text-xs md:text-sm mb-4">Parola Agli Ospiti</p>
+      <h2 class="reveal reveal-delay-1 font-serif text-3xl md:text-5xl leading-tight">Cosa Dicono di Noi</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <blockquote class="reveal bg-white rounded-2xl p-8 shadow-soft">
+        <div class="flex gap-1 text-terracotta-dark mb-5" aria-label="Valutazione 5 su 5 stelle">
+          <svg class="w-4 h-4" aria-hidden="true"><use href="#i-star"/></svg><svg class="w-4 h-4" aria-hidden="true"><use href="#i-star"/></svg><svg class="w-4 h-4" aria-hidden="true"><use href="#i-star"/></svg><svg class="w-4 h-4" aria-hidden="true"><use href="#i-star"/></svg><svg class="w-4 h-4" aria-hidden="true"><use href="#i-star"/></svg>
+        </div>
+        <p class="font-serif text-lg italic text-charcoal/90 leading-relaxed mb-6">"Un soggiorno indimenticabile. La Casa degli Ulivi &egrave; ancora pi&ugrave; bella dal vivo, e la colazione con i prodotti della tenuta &egrave; stata il tocco in pi&ugrave;."</p>
+        <footer class="flex items-center gap-3">
+          <span class="w-10 h-10 rounded-full bg-olive/20 text-olive-dark flex items-center justify-center font-serif text-sm">M.R.</span>
+          <div>
+            <p class="text-sm font-medium">Marta R.</p>
+            <p class="text-xs text-stone">Milano, Italia</p>
+          </div>
+        </footer>
+      </blockquote>
+
+      <blockquote class="reveal reveal-delay-1 bg-white rounded-2xl p-8 shadow-soft">
+        <div class="flex gap-1 text-terracotta-dark mb-5" aria-label="Valutazione 5 su 5 stelle">
+          <svg class="w-4 h-4" aria-hidden="true"><use href="#i-star"/></svg><svg class="w-4 h-4" aria-hidden="true"><use href="#i-star"/></svg><svg class="w-4 h-4" aria-hidden="true"><use href="#i-star"/></svg><svg class="w-4 h-4" aria-hidden="true"><use href="#i-star"/></svg><svg class="w-4 h-4" aria-hidden="true"><use href="#i-star"/></svg>
+        </div>
+        <p class="font-serif text-lg italic text-charcoal/90 leading-relaxed mb-6">"La Suite Panoramica ha una vista pazzesca, soprattutto al tramonto in piscina. I proprietari sono stati gentilissimi e disponibili per ogni consiglio."</p>
+        <footer class="flex items-center gap-3">
+          <span class="w-10 h-10 rounded-full bg-olive/20 text-olive-dark flex items-center justify-center font-serif text-sm">J.S.</span>
+          <div>
+            <p class="text-sm font-medium">James S.</p>
+            <p class="text-xs text-stone">Londra, UK</p>
+          </div>
+        </footer>
+      </blockquote>
+
+      <blockquote class="reveal reveal-delay-2 bg-white rounded-2xl p-8 shadow-soft">
+        <div class="flex gap-1 text-terracotta-dark mb-5" aria-label="Valutazione 5 su 5 stelle">
+          <svg class="w-4 h-4" aria-hidden="true"><use href="#i-star"/></svg><svg class="w-4 h-4" aria-hidden="true"><use href="#i-star"/></svg><svg class="w-4 h-4" aria-hidden="true"><use href="#i-star"/></svg><svg class="w-4 h-4" aria-hidden="true"><use href="#i-star"/></svg><svg class="w-4 h-4" aria-hidden="true"><use href="#i-star"/></svg>
+        </div>
+        <p class="font-serif text-lg italic text-charcoal/90 leading-relaxed mb-6">"Abbiamo soggiornato nella Casa dei Limoni con i bambini: spazio enorme, giardino sicuro e vicinissimi alle spiagge pi&ugrave; belle. Torneremo sicuramente."</p>
+        <footer class="flex items-center gap-3">
+          <span class="w-10 h-10 rounded-full bg-olive/20 text-olive-dark flex items-center justify-center font-serif text-sm">L.B.</span>
+          <div>
+            <p class="text-sm font-medium">Laura B.</p>
+            <p class="text-xs text-stone">Torino, Italia</p>
+          </div>
+        </footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRENOTA ORA ============ -->
+<section id="prenota" class="py-24 md:py-32 bg-cream">
+  <div class="max-w-8xl mx-auto px-6 md:px-10">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <p class="reveal text-terracotta-dark tracking-[0.3em] uppercase text-xs md:text-sm mb-4">Prenota Ora</p>
+      <h2 class="reveal reveal-delay-1 font-serif text-3xl md:text-5xl leading-tight">Organizza il Tuo Soggiorno</h2>
+      <p class="reveal reveal-delay-2 text-stone mt-5">Scrivici per verificare la disponibilit&agrave;: ti risponderemo entro 24 ore.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+
+      <!-- Form -->
+      <form id="booking-form" class="reveal bg-white rounded-2xl shadow-soft p-7 md:p-10" novalidate>
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div class="sm:col-span-2">
+            <label for="f-nome" class="block text-sm font-medium mb-1.5">Nome e Cognome</label>
+            <input id="f-nome" name="nome" type="text" required autocomplete="name"
+              class="w-full rounded-lg border border-sand bg-cream/40 px-4 py-3 text-sm focus:border-terracotta-dark focus:ring-0 outline-none transition">
+            <p class="field-error hidden text-xs text-terracotta-dark mt-1.5">Inserisci il tuo nome.</p>
+          </div>
+          <div>
+            <label for="f-email" class="block text-sm font-medium mb-1.5">Email</label>
+            <input id="f-email" name="email" type="email" required autocomplete="email"
+              class="w-full rounded-lg border border-sand bg-cream/40 px-4 py-3 text-sm focus:border-terracotta-dark focus:ring-0 outline-none transition">
+            <p class="field-error hidden text-xs text-terracotta-dark mt-1.5">Inserisci un'email valida.</p>
+          </div>
+          <div>
+            <label for="f-telefono" class="block text-sm font-medium mb-1.5">Telefono</label>
+            <input id="f-telefono" name="telefono" type="tel" required autocomplete="tel"
+              class="w-full rounded-lg border border-sand bg-cream/40 px-4 py-3 text-sm focus:border-terracotta-dark focus:ring-0 outline-none transition">
+            <p class="field-error hidden text-xs text-terracotta-dark mt-1.5">Inserisci un numero di telefono.</p>
+          </div>
+          <div>
+            <label for="f-checkin" class="block text-sm font-medium mb-1.5">Check-in</label>
+            <input id="f-checkin" name="checkin" type="date" required
+              class="w-full rounded-lg border border-sand bg-cream/40 px-4 py-3 text-sm focus:border-terracotta-dark focus:ring-0 outline-none transition">
+            <p class="field-error hidden text-xs text-terracotta-dark mt-1.5">Seleziona la data di arrivo.</p>
+          </div>
+          <div>
+            <label for="f-checkout" class="block text-sm font-medium mb-1.5">Check-out</label>
+            <input id="f-checkout" name="checkout" type="date" required
+              class="w-full rounded-lg border border-sand bg-cream/40 px-4 py-3 text-sm focus:border-terracotta-dark focus:ring-0 outline-none transition">
+            <p class="field-error hidden text-xs text-terracotta-dark mt-1.5">La data di partenza deve essere dopo il check-in.</p>
+          </div>
+          <div class="sm:col-span-2">
+            <label for="f-ospiti" class="block text-sm font-medium mb-1.5">Numero Ospiti</label>
+            <select id="f-ospiti" name="ospiti" required
+              class="w-full rounded-lg border border-sand bg-cream/40 px-4 py-3 text-sm focus:border-terracotta-dark focus:ring-0 outline-none transition">
+              <option value="">Seleziona&hellip;</option>
+              <option>1 ospite</option>
+              <option>2 ospiti</option>
+              <option>3 ospiti</option>
+              <option>4 ospiti</option>
+              <option>5 ospiti</option>
+              <option>6+ ospiti</option>
+            </select>
+            <p class="field-error hidden text-xs text-terracotta-dark mt-1.5">Seleziona il numero di ospiti.</p>
+          </div>
+          <div class="sm:col-span-2">
+            <label for="f-messaggio" class="block text-sm font-medium mb-1.5">Messaggio (opzionale)</label>
+            <textarea id="f-messaggio" name="messaggio" rows="4"
+              class="w-full rounded-lg border border-sand bg-cream/40 px-4 py-3 text-sm focus:border-terracotta-dark focus:ring-0 outline-none transition" placeholder="Raccontaci qualcosa in pi&ugrave; sul tuo soggiorno ideale&hellip;"></textarea>
+          </div>
+        </div>
+
+        <button type="submit" id="form-submit" class="mt-7 w-full inline-flex items-center justify-center gap-2 rounded-full bg-terracotta-dark hover:bg-terracotta text-cream px-8 py-4 text-sm md:text-base font-medium tracking-wide shadow-soft transition">
+          Richiedi Disponibilit&agrave;
+        </button>
+
+        <p id="form-success" role="status" class="hidden mt-4 flex items-center gap-2 text-sm text-olive-dark bg-olive/10 rounded-lg px-4 py-3">
+          <svg class="w-4 h-4 shrink-0" aria-hidden="true"><use href="#i-check"/></svg>
+          Grazie! Apriamo il tuo client email per inviarci la richiesta &mdash; controlla anche la finestra che si &egrave; aperta.
+        </p>
+        <p class="text-xs text-stone mt-4">Compilando il form verrai reindirizzato al tuo programma di posta per inviarci la richiesta. In alternativa, scrivici direttamente su WhatsApp.</p>
+      </form>
+
+      <!-- Contatti diretti + calendario -->
+      <div class="reveal reveal-delay-1 space-y-8">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <a href="https://wa.me/390000000000?text=Ciao%2C%20vorrei%20informazioni%20sulla%20disponibilit%C3%A0%20alla%20Tenuta%20Green%20House" target="_blank" rel="noopener"
+             class="flex items-center justify-center gap-2.5 rounded-full bg-[#25D366] text-white px-6 py-4 text-sm font-medium shadow-soft hover:brightness-95 transition">
+            <svg class="w-5 h-5" aria-hidden="true"><use href="#i-whatsapp"/></svg> Scrivici su WhatsApp
+          </a>
+          <a href="#" target="_blank" rel="noopener"
+             class="flex items-center justify-center gap-2.5 rounded-full bg-[#003580] text-white px-6 py-4 text-sm font-medium shadow-soft hover:brightness-110 transition">
+            <svg class="w-5 h-5" aria-hidden="true"><use href="#i-book"/></svg> Vedi su Booking.com
+          </a>
+          <a href="#" target="_blank" rel="noopener"
+             class="sm:col-span-2 flex items-center justify-center gap-2.5 rounded-full bg-[#FF5A5F] text-white px-6 py-4 text-sm font-medium shadow-soft hover:brightness-105 transition">
+            <svg class="w-5 h-5" aria-hidden="true"><use href="#i-airbnb"/></svg> Vedi su Airbnb
+          </a>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-soft p-6 md:p-8">
+          <div class="flex items-center justify-between mb-1">
+            <h3 class="font-serif text-xl">Disponibilit&agrave; Indicativa</h3>
+          </div>
+          <p class="text-xs text-stone mb-5">Calendario a scopo illustrativo: per la disponibilit&agrave; reale, contattaci.</p>
+          <div id="availability-calendar" class="grid sm:grid-cols-2 gap-6"></div>
+          <div class="flex items-center gap-5 mt-6 pt-5 border-t border-sand text-xs text-stone">
+            <span class="flex items-center gap-1.5"><span class="cal-dot bg-olive inline-block"></span>Libero</span>
+            <span class="flex items-center gap-1.5"><span class="cal-dot bg-terracotta-light inline-block"></span>Ultimi posti</span>
+            <span class="flex items-center gap-1.5"><span class="cal-dot bg-stone inline-block"></span>Occupato</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-charcoal text-cream/80">
+  <div class="max-w-8xl mx-auto px-6 md:px-10 py-16 grid md:grid-cols-3 gap-12">
+    <div>
+      <p class="flex items-center gap-2 font-serif text-xl text-cream mb-4">
+        <svg class="w-5 h-5" aria-hidden="true"><use href="#i-leaf"/></svg> Tenuta Green House
+      </p>
+      <p class="text-sm leading-relaxed max-w-xs">Case vacanze di lusso tra gli uliveti della Sicilia, a pochi minuti da Palermo.</p>
+      <div class="flex items-center gap-3 mt-6">
+        <a href="#" aria-label="Instagram" class="w-10 h-10 rounded-full border border-cream/25 flex items-center justify-center hover:bg-cream/10 transition"><svg class="w-4 h-4" aria-hidden="true"><use href="#i-ig"/></svg></a>
+        <a href="#" aria-label="Facebook" class="w-10 h-10 rounded-full border border-cream/25 flex items-center justify-center hover:bg-cream/10 transition"><svg class="w-4 h-4" aria-hidden="true"><use href="#i-fb"/></svg></a>
+      </div>
+    </div>
+
+    <div class="text-sm space-y-3">
+      <h4 class="font-serif text-lg text-cream mb-2">Contatti</h4>
+      <p class="flex items-start gap-2.5"><svg class="w-4 h-4 mt-0.5 shrink-0" aria-hidden="true"><use href="#i-pin"/></svg> Contrada Esempio, SP 1 &middot; 90100 Palermo (PA)</p>
+      <p class="flex items-center gap-2.5"><svg class="w-4 h-4 shrink-0" aria-hidden="true"><use href="#i-phone"/></svg> <a href="tel:+390000000000" class="hover:text-cream transition">+39 000 000 0000</a></p>
+      <p class="flex items-center gap-2.5"><svg class="w-4 h-4 shrink-0" aria-hidden="true"><use href="#i-mail"/></svg> <a href="mailto:info@tenutagreenhouse.it" class="hover:text-cream transition">info@tenutagreenhouse.it</a></p>
+    </div>
+
+    <div>
+      <h4 class="font-serif text-lg text-cream mb-4">Come Raggiungerci</h4>
+      <!-- MAPPA: sostituisci l'indirizzo nell'URL con quello reale della tenuta -->
+      <iframe
+        title="Mappa della Tenuta Green House"
+        src="https://www.google.com/maps?q=Palermo,Sicilia&output=embed"
+        class="w-full h-48 rounded-xl border-0"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+  <div class="border-t border-cream/10 py-6 text-center text-xs text-cream/50">
+    <p>&copy; <span id="footer-year"></span> Tenuta Green House. Tutti i diritti riservati.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Anno corrente nel footer */
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+  /* ---------- Header: sfondo dopo lo scroll ---------- */
+  var header = document.getElementById('site-header');
+  function onScroll(){
+    if (window.scrollY > 40) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+  }
+  document.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ---------- Menu mobile ---------- */
+  var menuToggle = document.getElementById('menu-toggle');
+  var mobileMenu = document.getElementById('mobile-menu');
+  var iconOpen = document.getElementById('menu-icon-open');
+  var iconClose = document.getElementById('menu-icon-close');
+
+  function setMenu(open){
+    mobileMenu.classList.toggle('hidden', !open);
+    iconOpen.classList.toggle('hidden', open);
+    iconClose.classList.toggle('hidden', !open);
+    menuToggle.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  menuToggle.addEventListener('click', function(){
+    setMenu(mobileMenu.classList.contains('hidden'));
+  });
+  document.querySelectorAll('.mobile-link').forEach(function(link){
+    link.addEventListener('click', function(){ setMenu(false); });
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') setMenu(false);
+  });
+
+  /* ---------- Reveal on scroll ---------- */
+  var revealEls = document.querySelectorAll('.reveal');
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(function(el){ io.observe(el); });
+  }
+
+  /* ---------- Placeholder immagini: fallback elegante se una foto non carica ---------- */
+  function placeholderDataUri(label){
+    var safe = (label || 'Tenuta Green House').replace(/&/g, '&amp;').replace(/</g, '&lt;');
+    var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="750">' +
+      '<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">' +
+      '<stop offset="0%" stop-color="#98A177"/><stop offset="55%" stop-color="#E7DCC3"/><stop offset="100%" stop-color="#C17A52"/>' +
+      '</linearGradient></defs>' +
+      '<rect width="1000" height="750" fill="url(#g)"/>' +
+      '<circle cx="500" cy="330" r="46" fill="none" stroke="#2A2822" stroke-opacity="0.35" stroke-width="4"/>' +
+      '<path d="M470 330a30 30 0 1060 0 30 30 0 10-60 0" fill="#2A2822" fill-opacity="0.25"/>' +
+      '<text x="500" y="420" font-family="Inter, sans-serif" font-size="26" fill="#2A2822" fill-opacity="0.75" text-anchor="middle">' + safe + '</text>' +
+      '<text x="500" y="454" font-family="Inter, sans-serif" font-size="16" fill="#2A2822" fill-opacity="0.55" text-anchor="middle">Sostituisci con la tua foto</text>' +
+      '</svg>';
+    return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
+  }
+  document.querySelectorAll('img[data-fallback-label]').forEach(function(img){
+    img.addEventListener('error', function onErr(){
+      img.removeEventListener('error', onErr);
+      img.src = placeholderDataUri(img.dataset.fallbackLabel || img.alt);
+    }, { once: true });
+  });
+
+  /* ---------- Lightbox galleria ---------- */
+  var galleryItems = Array.prototype.slice.call(document.querySelectorAll('.gallery-item'));
+  var lightbox = document.getElementById('lightbox');
+  var lightboxImg = document.getElementById('lightbox-img');
+  var lightboxCaption = document.getElementById('lightbox-caption');
+  var lastFocused = null;
+  var currentIndex = 0;
+
+  function openLightbox(index){
+    currentIndex = index;
+    var btn = galleryItems[index];
+    var img = btn.querySelector('img');
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightboxCaption.textContent = btn.dataset.caption || '';
+    lastFocused = document.activeElement;
+    lightbox.hidden = false;
+    document.body.style.overflow = 'hidden';
+    document.getElementById('lightbox-close').focus();
+  }
+  function closeLightbox(){
+    lightbox.hidden = true;
+    document.body.style.overflow = '';
+    if (lastFocused) lastFocused.focus();
+  }
+  function showRelative(delta){
+    openLightbox((currentIndex + delta + galleryItems.length) % galleryItems.length);
+  }
+
+  galleryItems.forEach(function(btn, i){
+    btn.addEventListener('click', function(){ openLightbox(i); });
+  });
+  document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+  document.getElementById('lightbox-prev').addEventListener('click', function(){ showRelative(-1); });
+  document.getElementById('lightbox-next').addEventListener('click', function(){ showRelative(1); });
+  lightbox.addEventListener('click', function(e){ if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', function(e){
+    if (lightbox.hidden) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') showRelative(-1);
+    if (e.key === 'ArrowRight') showRelative(1);
+  });
+
+  /* ---------- Calendario di disponibilità (illustrativo) ---------- */
+  var giorniSettimana = ['L','M','M','G','V','S','D'];
+  function hashDay(y, m, d){
+    var x = y * 397 + m * 31 + d;
+    x = (x ^ (x >> 13)) * 2654435761 % 2147483647;
+    return Math.abs(x) % 10;
+  }
+  function buildMonth(container, year, month){
+    var monthNames = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
+    var wrap = document.createElement('div');
+    var title = document.createElement('p');
+    title.className = 'text-sm font-medium mb-3 text-center';
+    title.textContent = monthNames[month] + ' ' + year;
+    wrap.appendChild(title);
+
+    var grid = document.createElement('div');
+    grid.className = 'grid grid-cols-7 gap-1.5';
+    giorniSettimana.forEach(function(g){
+      var h = document.createElement('div');
+      h.className = 'text-center text-[10px] text-stone/70';
+      h.textContent = g;
+      grid.appendChild(h);
+    });
+
+    var firstDay = new Date(year, month, 1);
+    var startOffset = (firstDay.getDay() + 6) % 7; // lunedì = 0
+    var daysInMonth = new Date(year, month + 1, 0).getDate();
+    var today = new Date(); today.setHours(0,0,0,0);
+
+    for (var i = 0; i < startOffset; i++) {
+      var empty = document.createElement('div');
+      grid.appendChild(empty);
+    }
+    for (var d = 1; d <= daysInMonth; d++) {
+      var cellDate = new Date(year, month, d);
+      var cell = document.createElement('div');
+      var isPast = cellDate < today;
+      var status = hashDay(year, month, d);
+      var colorClass = 'bg-olive/15 text-olive-dark';
+      if (!isPast) {
+        if (status < 2) colorClass = 'bg-stone/20 text-stone line-through';
+        else if (status < 4) colorClass = 'bg-terracotta-light/30 text-terracotta-dark';
+        else colorClass = 'bg-olive/15 text-olive-dark';
+      } else {
+        colorClass = 'bg-transparent text-stone/30';
+      }
+      cell.className = 'cal-day flex items-center justify-center rounded-md text-[11px] ' + colorClass;
+      cell.textContent = d;
+      grid.appendChild(cell);
+    }
+    wrap.appendChild(grid);
+    container.appendChild(wrap);
+  }
+  var calContainer = document.getElementById('availability-calendar');
+  if (calContainer) {
+    var now = new Date();
+    buildMonth(calContainer, now.getFullYear(), now.getMonth());
+    var next = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+    buildMonth(calContainer, next.getFullYear(), next.getMonth());
+  }
+
+  /* ---------- Form di prenotazione: validazione + invio via email ---------- */
+  var form = document.getElementById('booking-form');
+  var successMsg = document.getElementById('form-success');
+
+  function fieldWrap(input){ return input.closest('div'); }
+  function showError(input, show){
+    var wrap = fieldWrap(input);
+    var msg = wrap.querySelector('.field-error');
+    if (msg) msg.classList.toggle('hidden', !show);
+    input.classList.toggle('border-terracotta-dark', show);
+  }
+  function validateField(input){
+    var valid = input.checkValidity();
+    if (input.id === 'f-checkout' && input.value && form.checkin.value) {
+      valid = valid && (input.value > form.checkin.value);
+    }
+    showError(input, !valid);
+    return valid;
+  }
+
+  ['f-nome','f-email','f-telefono','f-checkin','f-checkout','f-ospiti'].forEach(function(id){
+    var el = document.getElementById(id);
+    el.addEventListener('blur', function(){ validateField(el); });
+  });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var requiredIds = ['f-nome','f-email','f-telefono','f-checkin','f-checkout','f-ospiti'];
+    var allValid = true;
+    requiredIds.forEach(function(id){
+      var el = document.getElementById(id);
+      if (!validateField(el)) allValid = false;
+    });
+    if (!allValid) {
+      successMsg.classList.add('hidden');
+      var firstInvalid = form.querySelector('.border-terracotta-dark');
+      if (firstInvalid) firstInvalid.focus();
+      return;
+    }
+
+    var data = {
+      nome: form.nome.value,
+      email: form.email.value,
+      telefono: form.telefono.value,
+      checkin: form.checkin.value,
+      checkout: form.checkout.value,
+      ospiti: form.ospiti.value,
+      messaggio: form.messaggio.value
+    };
+
+    /* CONFIGURAZIONE: sostituisci con la tua email reale, oppure collega il form
+       a un servizio come Formspree / Netlify Forms per un invio diretto senza client di posta. */
+    var destinatario = 'info@tenutagreenhouse.it';
+    var oggetto = 'Richiesta disponibilità - ' + data.nome;
+    var corpo = 'Nome: ' + data.nome + '\n' +
+                'Email: ' + data.email + '\n' +
+                'Telefono: ' + data.telefono + '\n' +
+                'Check-in: ' + data.checkin + '\n' +
+                'Check-out: ' + data.checkout + '\n' +
+                'Ospiti: ' + data.ospiti + '\n' +
+                'Messaggio: ' + (data.messaggio || '-');
+
+    var mailtoUrl = 'mailto:' + destinatario + '?subject=' + encodeURIComponent(oggetto) + '&body=' + encodeURIComponent(corpo);
+    window.location.href = mailtoUrl;
+
+    successMsg.classList.remove('hidden');
+    form.reset();
+  });
+})();
+</script>
+
+</body>
+</html>
