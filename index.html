@@ -555,6 +555,7 @@
 
       <!-- Form -->
       <form id="booking-form" class="reveal bg-white rounded-2xl shadow-soft p-7 md:p-10" novalidate>
+        <input type="hidden" name="_subject" value="Nuova richiesta di disponibilità - Tenuta Green House">
         <div class="grid sm:grid-cols-2 gap-5">
           <div class="sm:col-span-2">
             <label for="f-nome" class="block text-sm font-medium mb-1.5">Nome e Cognome</label>
@@ -619,9 +620,13 @@
 
         <p id="form-success" role="status" class="hidden mt-4 flex items-center gap-2 text-sm text-olive-dark bg-olive/10 rounded-lg px-4 py-3">
           <svg class="w-4 h-4 shrink-0" aria-hidden="true"><use href="#i-check"/></svg>
-          Grazie! Apriamo il tuo client email per inviarci la richiesta &mdash; controlla anche la finestra che si &egrave; aperta.
+          Grazie! Abbiamo ricevuto la tua richiesta, ti risponderemo entro 24 ore.
         </p>
-        <p class="text-xs text-stone mt-4">Compilando il form verrai reindirizzato al tuo programma di posta per inviarci la richiesta. In alternativa, scrivici direttamente su WhatsApp.</p>
+        <p id="form-error" role="alert" hidden class="mt-4 flex items-center gap-2 text-sm text-terracotta-dark bg-terracotta-light/30 rounded-lg px-4 py-3">
+          <svg class="w-4 h-4 shrink-0" aria-hidden="true"><use href="#i-alert"/></svg>
+          Si &egrave; verificato un errore nell'invio. Riprova, oppure scrivici direttamente su WhatsApp o via email.
+        </p>
+        <p class="text-xs text-stone mt-4">Puoi anche scriverci direttamente su WhatsApp per una risposta pi&ugrave; rapida.</p>
       </form>
 
       <!-- Contatti diretti + calendario -->
@@ -967,6 +972,10 @@
     el.addEventListener('blur', function(){ validateField(el); });
   });
 
+  var submitBtn = document.getElementById('form-submit');
+  var errorMsg = document.getElementById('form-error');
+  var FORMSPREE_ENDPOINT = 'https://formspree.io/f/xaenwzre';
+
   form.addEventListener('submit', function(e){
     e.preventDefault();
     var requiredIds = ['f-nome','f-email','f-telefono','f-checkin','f-checkout','f-ospiti'];
@@ -982,33 +991,28 @@
       return;
     }
 
-    var data = {
-      nome: form.nome.value,
-      email: form.email.value,
-      telefono: form.telefono.value,
-      checkin: form.checkin.value,
-      checkout: form.checkout.value,
-      ospiti: form.ospiti.value,
-      messaggio: form.messaggio.value
-    };
+    successMsg.classList.add('hidden');
+    if (errorMsg) errorMsg.classList.add('hidden');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Invio in corso…';
 
-    /* CONFIGURAZIONE: sostituisci con la tua email reale, oppure collega il form
-       a un servizio come Formspree / Netlify Forms per un invio diretto senza client di posta. */
-    var destinatario = 'info@tenutagreenhouse.it';
-    var oggetto = 'Richiesta disponibilità - ' + data.nome;
-    var corpo = 'Nome: ' + data.nome + '\n' +
-                'Email: ' + data.email + '\n' +
-                'Telefono: ' + data.telefono + '\n' +
-                'Check-in: ' + data.checkin + '\n' +
-                'Check-out: ' + data.checkout + '\n' +
-                'Ospiti: ' + data.ospiti + '\n' +
-                'Messaggio: ' + (data.messaggio || '-');
-
-    var mailtoUrl = 'mailto:' + destinatario + '?subject=' + encodeURIComponent(oggetto) + '&body=' + encodeURIComponent(corpo);
-    window.location.href = mailtoUrl;
-
-    successMsg.classList.remove('hidden');
-    form.reset();
+    fetch(FORMSPREE_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    }).then(function(response){
+      if (response.ok) {
+        successMsg.classList.remove('hidden');
+        form.reset();
+      } else {
+        if (errorMsg) errorMsg.classList.remove('hidden');
+      }
+    }).catch(function(){
+      if (errorMsg) errorMsg.classList.remove('hidden');
+    }).finally(function(){
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Richiedi Disponibilità';
+    });
   });
 })();
 </script>
