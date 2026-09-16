@@ -79,6 +79,8 @@
   header.scrolled .nav-link{ color: #2A2822; text-shadow: none; }
   header.scrolled .brand-mark{ color: #454A34; }
   header .brand-mark{ color: #FBF7F0; text-shadow: 0 1px 6px rgba(0,0,0,.35); }
+  header .logo-icon{ filter: brightness(0) invert(1) drop-shadow(0 1px 4px rgba(0,0,0,.35)); transition: filter .4s ease; }
+  header.scrolled .logo-icon{ filter: none; }
 
   .hero-scroll-cue{ animation: bob 2.2s ease-in-out infinite; }
   @keyframes bob{ 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(8px);} }
@@ -136,8 +138,9 @@
 <header id="site-header" class="fixed top-0 inset-x-0 z-50">
   <div class="max-w-8xl mx-auto px-6 md:px-10">
     <div class="flex items-center justify-between h-20 md:h-24">
-      <a href="#home" class="brand-mark flex items-center gap-2 font-serif text-lg md:text-xl tracking-wide">
-        <img src="images/logo-green-tenuta-house.jpg" alt="Green Tenuta House Avola" class="w-12 h-12 md:w-14 md:h-14 rounded-lg object-contain" loading="eager" fetchpriority="high">
+      <a href="#home" class="brand-mark flex items-center gap-2 font-serif text-xl md:text-2xl tracking-wide">
+        <img src="images/logo-icon.png" alt="" aria-hidden="true" class="logo-icon w-8 h-8 md:w-9 md:h-9" loading="eager" fetchpriority="high">
+        Tenuta <span class="italic">Green House</span>
       </a>
 
       <nav class="hidden lg:flex items-center gap-10 text-sm font-medium tracking-wide">
@@ -604,8 +607,9 @@
 <footer class="bg-charcoal text-cream/80">
   <div class="max-w-8xl mx-auto px-6 md:px-10 py-16 grid md:grid-cols-3 gap-12">
     <div>
-      <!-- Logo -->
-      <img src="images/logo-green-tenuta-house.jpg" alt="Green Tenuta House Avola Logo" class="w-24 h-24 mb-6 rounded-lg object-contain">
+      <p class="flex items-center gap-2 font-serif text-xl text-cream mb-4">
+        <img src="images/logo-icon.png" alt="" aria-hidden="true" class="w-6 h-6" style="filter: brightness(0) invert(1);"> Tenuta Green House
+      </p>
       <p class="text-sm leading-relaxed max-w-xs mb-6">Case vacanze di lusso tra gli uliveti della Sicilia, a pochi minuti da Palermo.</p>
       <div class="flex items-center gap-3">
         <a href="#" aria-label="Instagram" class="w-10 h-10 rounded-full border border-cream/25 flex items-center justify-center hover:bg-cream/10 transition"><svg class="w-4 h-4" aria-hidden="true"><use href="#i-ig"/></svg></a>
