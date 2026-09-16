@@ -147,6 +147,7 @@
         <a href="#home" class="nav-link hover:opacity-70 transition">Home</a>
         <a href="#le-case" class="nav-link hover:opacity-70 transition">Le Case</a>
         <a href="#servizi" class="nav-link hover:opacity-70 transition">Servizi</a>
+        <a href="#dintorni" class="nav-link hover:opacity-70 transition">Dintorni</a>
         <a href="#gallery" class="nav-link hover:opacity-70 transition">Gallery</a>
         <a href="#recensioni" class="nav-link hover:opacity-70 transition">Recensioni</a>
         <a href="#prenota" class="ml-2 inline-flex items-center rounded-full bg-terracotta-dark text-cream px-6 py-2.5 shadow-soft hover:bg-terracotta transition">Prenota</a>
@@ -165,6 +166,7 @@
       <a href="#home" class="mobile-link py-3 border-b border-sand/70">Home</a>
       <a href="#le-case" class="mobile-link py-3 border-b border-sand/70">Le Case</a>
       <a href="#servizi" class="mobile-link py-3 border-b border-sand/70">Servizi</a>
+      <a href="#dintorni" class="mobile-link py-3 border-b border-sand/70">Dintorni</a>
       <a href="#gallery" class="mobile-link py-3 border-b border-sand/70">Gallery</a>
       <a href="#recensioni" class="mobile-link py-3 border-b border-sand/70">Recensioni</a>
       <a href="#prenota" class="mobile-link mt-4 inline-flex justify-center rounded-full bg-terracotta-dark text-cream px-6 py-3 text-base font-sans font-medium">Prenota il tuo soggiorno</a>
@@ -391,6 +393,40 @@
         <span class="w-14 h-14 rounded-full bg-cream/10 flex items-center justify-center"><svg class="w-6 h-6 text-cream" aria-hidden="true"><use href="#i-check"/></svg></span>
         <p class="text-sm">Check-in Flessibile</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DINTORNI ============ -->
+<section id="dintorni" class="py-24 md:py-32 bg-sand-light">
+  <div class="max-w-8xl mx-auto px-6 md:px-10">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <p class="reveal text-terracotta-dark tracking-[0.3em] uppercase text-xs md:text-sm mb-4">Un Servizio in Pi&ugrave;</p>
+      <h2 class="reveal reveal-delay-1 font-serif text-3xl md:text-5xl leading-tight mb-6">Scopri i Dintorni</h2>
+      <p class="reveal reveal-delay-2 text-stone leading-relaxed">
+        Oltre all'ospitalit&agrave; in tenuta, offriamo ai nostri ospiti una guida completa alle meraviglie della Sicilia sud-orientale: dalle spiagge di Calamosche e San Lorenzo, ai borghi barocchi di Noto e Modica, fino all'Etna e alla Valle dei Templi. In struttura trovate mappe e bacheche illustrate con tutte le distanze, per organizzare al meglio le vostre escursioni.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+      <button type="button" class="dintorni-gallery-trigger reveal relative rounded-2xl overflow-hidden shadow-soft group h-72 md:h-96" data-index="0" aria-label="Vedi la bacheca delle attrazioni turistiche">
+        <img src="images/dintorni-bacheca.jpg" data-fallback-label="Attrazioni Turistiche" alt="Bacheca con le attrazioni turistiche vicine alla Tenuta Green House" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        <span class="absolute inset-0 bg-charcoal/0 hover:bg-charcoal/30 transition-colors flex items-center justify-center opacity-0 hover:opacity-100">
+          <span class="text-cream text-sm font-medium bg-charcoal/70 px-4 py-2 rounded-full">Ingrandisci</span>
+        </span>
+      </button>
+      <button type="button" class="dintorni-gallery-trigger reveal reveal-delay-1 relative rounded-2xl overflow-hidden shadow-soft group h-72 md:h-96" data-index="1" aria-label="Vedi la mappa della Sicilia con i luoghi da visitare">
+        <img src="images/dintorni-mappa-sicilia.jpg" data-fallback-label="Mappa Sicilia" alt="Mappa della Sicilia con i luoghi da visitare vicino alla Tenuta Green House" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        <span class="absolute inset-0 bg-charcoal/0 hover:bg-charcoal/30 transition-colors flex items-center justify-center opacity-0 hover:opacity-100">
+          <span class="text-cream text-sm font-medium bg-charcoal/70 px-4 py-2 rounded-full">Ingrandisci</span>
+        </span>
+      </button>
+      <button type="button" class="dintorni-gallery-trigger reveal reveal-delay-2 relative rounded-2xl overflow-hidden shadow-soft group h-72 md:h-96" data-index="2" aria-label="Vedi la mappa di Avola">
+        <img src="images/dintorni-mappa-avola.jpg" data-fallback-label="Mappa Avola" alt="Mappa di Avola con spiagge, canyon e punti di interesse" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        <span class="absolute inset-0 bg-charcoal/0 hover:bg-charcoal/30 transition-colors flex items-center justify-center opacity-0 hover:opacity-100">
+          <span class="text-cream text-sm font-medium bg-charcoal/70 px-4 py-2 rounded-full">Ingrandisci</span>
+        </span>
+      </button>
     </div>
   </div>
 </section>
@@ -813,6 +849,17 @@
     btn.addEventListener('click', function(){
       var house = btn.dataset.house;
       openLightbox(0, houseGalleries[house]);
+    });
+  });
+
+  var dintorniGallery = [
+    { src: 'images/dintorni-bacheca.jpg', alt: 'Bacheca con le attrazioni turistiche vicine alla Tenuta Green House', caption: 'Bacheca delle attrazioni turistiche in loco' },
+    { src: 'images/dintorni-mappa-sicilia.jpg', alt: 'Mappa della Sicilia con i luoghi da visitare vicino alla Tenuta Green House', caption: 'Mappa dei luoghi da visitare in Sicilia' },
+    { src: 'images/dintorni-mappa-avola.jpg', alt: 'Mappa di Avola con spiagge, canyon e punti di interesse', caption: 'Mappa di Avola: spiagge, canyon e punti di interesse' }
+  ];
+  Array.prototype.slice.call(document.querySelectorAll('.dintorni-gallery-trigger')).forEach(function(btn){
+    btn.addEventListener('click', function(){
+      openLightbox(parseInt(btn.dataset.index, 10), dintorniGallery);
     });
   });
   document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
