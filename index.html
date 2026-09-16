@@ -259,12 +259,15 @@
 
       <!-- Casa 1 -->
       <article class="reveal bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-xl transition-shadow group">
-        <div class="overflow-hidden h-64">
+        <button type="button" class="house-gallery-trigger relative block w-full h-64 overflow-hidden" data-house="1" aria-label="Vedi tutte le foto della Casa 1">
           <img src="images/casa1-esterno1.jpg"
                data-fallback-label="Casa 1"
                alt="Terrazza esterna della Casa 1 con pareti in pietra e azzurro mediterraneo"
                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-        </div>
+          <span class="absolute inset-0 bg-charcoal/0 hover:bg-charcoal/30 transition-colors flex items-center justify-center opacity-0 hover:opacity-100">
+            <span class="text-cream text-sm font-medium bg-charcoal/70 px-4 py-2 rounded-full">Vedi tutte le foto</span>
+          </span>
+        </button>
         <div class="p-7">
           <h3 class="font-serif text-2xl mb-2">Casa 1</h3>
           <p class="text-stone text-sm mb-5">Affacciata sugli ulivi secolari, con terrazza privata per le cene al tramonto.</p>
@@ -286,12 +289,15 @@
 
       <!-- Casa 2 -->
       <article class="reveal reveal-delay-1 bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-xl transition-shadow group">
-        <div class="overflow-hidden h-64">
+        <button type="button" class="house-gallery-trigger relative block w-full h-64 overflow-hidden" data-house="2" aria-label="Vedi tutte le foto della Casa 2">
           <img src="images/casa2-esterno1.jpg"
                data-fallback-label="Casa 2"
                alt="Esterno della Casa 2 con pareti azzurre e panchina bianca"
                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-        </div>
+          <span class="absolute inset-0 bg-charcoal/0 hover:bg-charcoal/30 transition-colors flex items-center justify-center opacity-0 hover:opacity-100">
+            <span class="text-cream text-sm font-medium bg-charcoal/70 px-4 py-2 rounded-full">Vedi tutte le foto</span>
+          </span>
+        </button>
         <div class="p-7">
           <h3 class="font-serif text-2xl mb-2">Casa 2</h3>
           <p class="text-stone text-sm mb-5">Circondata dal profumo degli agrumeti, ideale per famiglie con ampio giardino privato.</p>
@@ -313,12 +319,15 @@
 
       <!-- Casa 3 -->
       <article class="reveal reveal-delay-2 bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-xl transition-shadow group">
-        <div class="overflow-hidden h-64">
+        <button type="button" class="house-gallery-trigger relative block w-full h-64 overflow-hidden" data-house="3" aria-label="Vedi tutte le foto della Casa 3">
           <img src="images/casa3-esterno1.jpg"
                data-fallback-label="Casa 3"
                alt="Terrazza esterna della Casa 3 con fiori e angolo relax"
                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-        </div>
+          <span class="absolute inset-0 bg-charcoal/0 hover:bg-charcoal/30 transition-colors flex items-center justify-center opacity-0 hover:opacity-100">
+            <span class="text-cream text-sm font-medium bg-charcoal/70 px-4 py-2 rounded-full">Vedi tutte le foto</span>
+          </span>
+        </button>
         <div class="p-7">
           <h3 class="font-serif text-2xl mb-2">Casa 3</h3>
           <p class="text-stone text-sm mb-5">La nostra suite più esclusiva, con piscina a sfioro privata e vista sulle colline.</p>
@@ -728,14 +737,60 @@
   var lightboxCaption = document.getElementById('lightbox-caption');
   var lastFocused = null;
   var currentIndex = 0;
+  var currentGallery = null; // null = usa galleryItems (galleria generale), altrimenti array {src,alt,caption}
 
-  function openLightbox(index){
+  var houseGalleries = {
+    '1': [
+      { src: 'images/casa1-esterno1.jpg', alt: 'Terrazza esterna della Casa 1', caption: 'Terrazza esterna, Casa 1' },
+      { src: 'images/casa1-esterno2.jpg', alt: 'Terrazza con forno a legna della Casa 1', caption: 'Terrazza con forno a legna, Casa 1' },
+      { src: 'images/casa1-camera1.jpg', alt: 'Camera da letto della Casa 1', caption: 'Camera da letto, Casa 1' },
+      { src: 'images/casa1-camera2.jpg', alt: 'Seconda camera da letto della Casa 1', caption: 'Camera da letto, Casa 1' },
+      { src: 'images/casa1-cucina1.jpg', alt: 'Cucina della Casa 1', caption: 'Cucina, Casa 1' },
+      { src: 'images/casa1-cucina2.jpg', alt: 'Cucina della Casa 1', caption: 'Cucina, Casa 1' },
+      { src: 'images/casa1-bagno.jpg', alt: 'Bagno della Casa 1', caption: 'Bagno, Casa 1' }
+    ],
+    '2': [
+      { src: 'images/casa2-esterno1.jpg', alt: 'Esterno della Casa 2', caption: 'Esterno, Casa 2' },
+      { src: 'images/casa2-esterno2.jpg', alt: 'Ingresso della Casa 2', caption: 'Ingresso, Casa 2' },
+      { src: 'images/casa2-soggiorno1.jpg', alt: 'Soggiorno della Casa 2', caption: 'Soggiorno, Casa 2' },
+      { src: 'images/casa2-soggiorno2.jpg', alt: 'Soggiorno della Casa 2', caption: 'Soggiorno, Casa 2' },
+      { src: 'images/casa2-camera1.jpg', alt: 'Camera da letto della Casa 2', caption: 'Camera da letto, Casa 2' },
+      { src: 'images/casa2-camera2.jpg', alt: 'Camera da letto della Casa 2', caption: 'Camera da letto, Casa 2' },
+      { src: 'images/casa2-cucina1.jpg', alt: 'Cucina della Casa 2', caption: 'Cucina, Casa 2' },
+      { src: 'images/casa2-bagno1.jpg', alt: 'Bagno della Casa 2', caption: 'Bagno, Casa 2' },
+      { src: 'images/casa2-bagno2.jpg', alt: 'Bagno della Casa 2', caption: 'Bagno, Casa 2' }
+    ],
+    '3': [
+      { src: 'images/casa3-esterno1.jpg', alt: 'Terrazza esterna della Casa 3', caption: 'Terrazza esterna, Casa 3' },
+      { src: 'images/casa3-soggiorno1.jpg', alt: 'Soggiorno della Casa 3', caption: 'Soggiorno, Casa 3' },
+      { src: 'images/casa3-soggiorno2.jpg', alt: 'Soggiorno della Casa 3', caption: 'Soggiorno, Casa 3' },
+      { src: 'images/casa3-camera1.jpg', alt: 'Camera da letto della Casa 3', caption: 'Camera da letto, Casa 3' },
+      { src: 'images/casa3-camera2.jpg', alt: 'Seconda camera da letto della Casa 3', caption: 'Camera da letto, Casa 3' },
+      { src: 'images/casa3-cucina1.jpg', alt: 'Cucina della Casa 3', caption: 'Cucina, Casa 3' },
+      { src: 'images/casa3-cucina2.jpg', alt: 'Cucina della Casa 3', caption: 'Cucina, Casa 3' },
+      { src: 'images/casa3-bagno1.jpg', alt: 'Bagno della Casa 3', caption: 'Bagno, Casa 3' }
+    ]
+  };
+
+  function galleryLength(){
+    return currentGallery ? currentGallery.length : galleryItems.length;
+  }
+
+  function openLightbox(index, gallery){
+    currentGallery = gallery || null;
     currentIndex = index;
-    var btn = galleryItems[index];
-    var img = btn.querySelector('img');
-    lightboxImg.src = img.src;
-    lightboxImg.alt = img.alt;
-    lightboxCaption.textContent = btn.dataset.caption || '';
+    if (currentGallery){
+      var item = currentGallery[index];
+      lightboxImg.src = item.src;
+      lightboxImg.alt = item.alt;
+      lightboxCaption.textContent = item.caption || '';
+    } else {
+      var btn = galleryItems[index];
+      var img = btn.querySelector('img');
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightboxCaption.textContent = btn.dataset.caption || '';
+    }
     lastFocused = document.activeElement;
     lightbox.hidden = false;
     document.body.style.overflow = 'hidden';
@@ -747,11 +802,18 @@
     if (lastFocused) lastFocused.focus();
   }
   function showRelative(delta){
-    openLightbox((currentIndex + delta + galleryItems.length) % galleryItems.length);
+    openLightbox((currentIndex + delta + galleryLength()) % galleryLength(), currentGallery);
   }
 
   galleryItems.forEach(function(btn, i){
     btn.addEventListener('click', function(){ openLightbox(i); });
+  });
+
+  Array.prototype.slice.call(document.querySelectorAll('.house-gallery-trigger')).forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var house = btn.dataset.house;
+      openLightbox(0, houseGalleries[house]);
+    });
   });
   document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
   document.getElementById('lightbox-prev').addEventListener('click', function(){ showRelative(-1); });
